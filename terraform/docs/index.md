@@ -1,64 +1,24 @@
 ---
-id: what-is-backstage
-title: What is Backstage?
+id: what-is-resource-group
+title: What is Resource Group?
 # prettier-ignore
-description: Backstage is an open platform for building developer portals. Powered by a centralized software catalog, Backstage restores order to your microservices and infrastructure
+description: A resource group is a container that holds related resources for an Azure solution. The resource group can include all the resources for the solution, or only those resources that you want to manage as a group.
 ---
 
-![software-catalog](../assets/header.png)
+![Azure Resource Group ](../assets/azure_resource_group.png)
 
-[Backstage](https://backstage.io/) is an open platform for building developer
-portals. Powered by a centralized software catalog, Backstage restores order to
-your microservices and infrastructure and enables your product teams to ship
-high-quality code quickly — without compromising autonomy.
+[Azure Resource Group](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal) A resource group is a container that holds related resources for an Azure solution. The resource group can include all the resources for the solution, or only those resources that you want to manage as a group.
 
-Backstage unifies all your infrastructure tooling, services, and documentation
-to create a streamlined development environment from end to end.
+You decide how you want to allocate resources to resource groups based on what makes the most sense for your organization. Generally, add resources that share the same lifecycle to the same resource group so you can easily deploy, update, and delete them as a group.
 
-<iframe width="672" height="378" src="https://www.youtube.com/embed/85TQEpNCaU0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+The resource group scope is also used throughout the Azure portal to create views that span across multiple resources. For example:
 
-Out of the box, Backstage includes:
+- Metrics blade provides metrics information (CPU, resources) to users.
 
-- [Backstage Software Catalog](../features/software-catalog/index.md) for
-  managing all your software (microservices, libraries, data pipelines,
-  websites, ML models, etc.)
+- Deployments blade shows the history of ARM Template or Bicep deployments targeted to that Resource Group (which includes Portal deployments).
 
-- [Backstage Software Templates](../features/software-templates/index.md) for
-  quickly spinning up new projects and standardizing your tooling with your
-  organization’s best practices
+- Policy blade provides information related to the policies enforced on the resource group.
 
-- [Backstage TechDocs](../features/techdocs/README.md) for making it easy to
-  create, maintain, find, and use technical documentation, using a "docs like
-  code" approach
+- Diagnostics settings blade provides the ability to diagnose errors or review warnings.
 
-- Plus, a growing ecosystem of
-  [open source plugins](https://github.com/backstage/backstage/tree/master/plugins)
-  that further expand Backstage’s customizability and functionality
-
-## Backstage and the CNCF
-
-Backstage is a CNCF Incubation project after graduating from Sandbox. Read the announcement
-[here](https://backstage.io/blog/2022/03/16/backstage-turns-two#out-of-the-sandbox-and-into-incubation).
-
-<img src="https://backstage.io/img/cncf-white.svg" width="400" />
-
-## Benefits
-
-- For _engineering managers_, it allows you to maintain standards and best
-  practices across the organization, and can help you manage your whole tech
-  ecosystem, from migrations to test certification.
-
-- For _end users_ (developers), it makes it fast and simple to build software
-  components in a standardized way, and it provides a central place to manage
-  all projects and documentation.
-
-- For _platform engineers_, it enables extensibility and scalability by letting
-  you easily integrate new tools and services (via plugins), as well as
-  extending the functionality of existing ones.
-
-- For _everyone_, it’s a single, consistent experience that ties all your
-  infrastructure tooling, resources, standards, owners, contributors, and
-  administrators together in one place.
-
-If you have questions or want support, please join our
-[Discord chatroom](https://discord.gg/backstage-687207715902193673).
+The resource group stores metadata about the resources. Therefore, when you specify a location for the resource group, you're specifying where that metadata is stored. For compliance reasons, you might need to ensure that your data is stored in a particular region. Note that resources inside a resource group can be of different regions.

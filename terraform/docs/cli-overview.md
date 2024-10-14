@@ -1,53 +1,152 @@
 ---
-id: cli-overview
+id: atlantis-cli-overview
 title: Overview
-description: Overview of the Backstage CLI
+description: Overview of the Atlantis CLI
 ---
 
 ## Introduction
 
-A goal of Backstage is to provide a delightful developer experience in and
-around the project. Creating new apps and plugins should be simple, iteration
-speed should be fast, and the overhead of maintaining custom tooling should be
-minimal. As a part of accomplishing this goal, Backstage provides its own build
-system and tooling, delivered primarily through the
-[`@backstage/cli`](https://www.npmjs.com/package/@backstage/cli) package. When
-creating an app using
-[`@backstage/create-app`](https://www.npmjs.com/package/@backstage/create-app),
-you receive a project that's already prepared with a typical setup and package
-scripts for executing the most common commands.
+Atlantis triggers commands via pull request comments.
+![atlantis](../assets/pr-comment-help.png)
 
-Under the hood the CLI uses [Webpack](https://webpack.js.org/) for bundling,
-[Rollup](https://rollupjs.org/) for building packages,
-[Jest](https://jestjs.io/) for testing, and [eslint](https://eslint.org/) for
-linting. It also includes tooling for working within Backstage apps, for example
-for keeping the app up to date and verifying static configuration. For a more
-in-depth look into the tooling, see the [build system](./cli-build-system.md)
-page, and for a list of commands, see the [commands](./cli-commands.md) page.
+### Atlantis Help
 
-While the Backstage tooling is opinionated in how it works, it is also possible
-to use your own tooling either partially or fully. For example, the CLI provides
-a command for building a plugin package for publishing, but the output is a
-quite standard combination of transpiled JavaScript and TypeScript type
-declarations. The usage of the command from the CLI can therefore be augmented
-or replaced with other tools if necessary.
+```bash
+atlantis help
+```
 
-The Backstage CLI intentionally does not provide many hooks for overriding or
-customizing the build process. This is to allow for evolution of the CLI without
-having to take a wide API surface into account. This allows us to iterate and
-improve the tooling, as well as to more easily keep the system up to date.
+View help
 
-## Glossary
+### Atlantis Version
 
-- **Package** - A package in the Node.js ecosystem, often published to a package
-  registry such as [NPM](https://www.npmjs.com/).
-- **Monorepo** - A project layout that consists of multiple packages within a
-  single project, where packages are able to have local dependencies on each
-  other. Often enabled through tooling such as [lerna](https://lerna.js.org/)
-  and [yarn workspaces](https://classic.yarnpkg.com/en/docs/workspaces/)
-- **Local Package** - One of the packages within a monorepo. These package may
-  or may not also be published to a package registry.
-- **Bundle** - A collection of the deployment artifacts. The output of the
-  bundling process, which brings a collection of packages into a single
-  collection of deployment artifacts.
-- **Package Role** - The declared role of a package, see [package roles](./cli-build-system.md#package-roles).
+```bash
+atlantis version
+```
+
+Print the output of 'terraform version'.
+
+### Atlantis Plan
+
+```bash
+atlantis plan [options] -- [terraform plan flags]
+```
+
+Runs terraform plan on the pull request's branch.
+You may wish to re-run plan after Atlantis has already done so if you've changed some resources manually.
+
+#### Runs plan in the root directory of the repo with workspace `default`
+
+```bash
+atlantis plan -d .
+```
+
+#### Runs plan in the `project1` directory of the repo with workspace `default`
+
+```bash
+atlantis plan -p project1
+```
+
+#### Runs plan in the root directory of the repo with workspace `staging`
+
+```bash
+atlantis plan -w staging
+```
+
+## Options
+
+- d `directory`: Which directory to run plan in relative to root of repo. Use . for root.
+Ex. atlantis plan -d child/dir
+
+-p `project`: Which project to run plan for. Refers to the name of the project configured in the repo's atlantis.yaml file. Cannot be used at same time as `-d` or `-w` because the project defines this already.
+
+-w `workspace`: Switch to this Terraform workspace before planning. Defaults to default. Ignore this if Terraform workspaces are unused.
+
+- `--verbose`: Append Atlantis log to comment.
+
+### Note:
+
+- A `atlantis plan` (***without flags***), like autoplans, discards all plans previously created with atlantis plan -p/ -d/ -w.
+
+## Additional Terraform flags
+
+If terraform plan requires additional arguments, like -target=resource or -var 'foo=bar' or -var-file myfile.tfvars you can append them to the end of the comment after --
+
+```bash
+atlantis plan -d dir -- -var foo='bar'
+```
+
+## Using the -destroy Flag
+
+To perform a destructive plan that will destroy resources you can use the -destroy flag like this:
+
+```bash
+atlantis plan -- -destroy
+```
+
+or
+
+```bash
+atlantis plan -d dir -- -destroy
+```
+### Note:
+
+The `-destroy` flag generates a destroy plan, If this plan is applied it can result in data loss or service disruptions. Ensure that you have thoroughly reviewed your Terraform configuration and intend to remove the specified resources before using this flag.
+
+## atlantis apply
+
+```bash
+atlantis apply [options] -- [terraform apply flags]
+```
+Runs terraform apply for the plan that matches the directory/project/workspace.
+
+### TIP
+
+If no directory/project/workspace is specified, ex. atlantis apply, this command will apply all unapplied plans from this pull request.
+
+This includes all projects that have been planned manually with atlantis plan -p/-d/-w since the last autoplan or atlantis plan command.
+
+For Atlantis commands to work, Atlantis needs to know the location where the plan file is. For that, you can use $PLANFILE which will contain the path of the plan file to be used in your custom steps. i.e terraform plan -out $PLANFILE.
+
+#### Runs apply for all unapplied plans from this pull request.
+
+```bash
+atlantis apply
+```
+
+#### Runs apply in the root directory of the repo with workspace `default`.
+
+```bash
+atlantis apply -d .
+```
+
+#### Runs apply in the `project1` directory of the repo with workspace `default`
+
+```bash
+atlantis apply -p project1
+```
+
+#### Runs apply in the root directory of the repo with workspace `staging`
+
+```bash
+atlantis apply -w staging
+```
+
+### Options
+
+- -d `directory`: Apply the plan for this directory, relative to root of repo. Use . for root.
+
+- -p `project`: Apply the plan for this project. Refers to the name of the project configured in the repo's atlantis.yaml file. Cannot be used at same time as -d or -w.
+
+- -w `workspace`: Apply the plan for this Terraform workspace. Ignore this if Terraform workspaces are unused.
+
+- `--auto-merge-disabled`: Disable automerge for this apply command.
+
+- `--verbose`: Append Atlantis log to comment.
+
+### Because Atlantis under the hood is running terraform apply plan.tfplan, any Terraform options that would change the plan are ignored, ex:
+
+- -target=resource
+- -var 'foo=bar'
+- -var-file=myfile.tfvars
+
+They're ignored because they can't be specified for an already generated planfile. If you would like to specify these flags, do it while running atlantis plan.
