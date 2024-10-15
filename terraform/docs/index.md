@@ -24,3 +24,5 @@ The resource group scope is also used throughout the Azure portal to create view
 The resource group stores metadata about the resources. Therefore, when you specify a location for the resource group, you're specifying where that metadata is stored. For compliance reasons, you might need to ensure that your data is stored in a particular region. Note that resources inside a resource group can be of different regions.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TmIPWda0IKg?si=SLuEwPlC6BbneaNS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+![type:video](https://www.youtube.com/embed/TmIPWda0IKg?si=SLuEwPlC6BbneaNS)
