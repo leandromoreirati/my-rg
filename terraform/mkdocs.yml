@@ -12,8 +12,7 @@ nav:
     - Atlantis:
       - What is Atlantis?: 'what-is-atlantis.md'
       - How to Use: 'how-to-use-atlantis.md'
-      - Atlantis CLI: 'cli-overview.md'
-  - Resource Available Variable: '../README.md'
+  - Resource Available Variable: '../../README.md'
   - Module Documentation: 'https://github.com/leandromoreirati/tf-module-azure-resource-group/blob/main/README.md'
   - Module Changelog: 'https://github.com/leandromoreirati/tf-module-azure-resource-group/blob/main/CHANGELOG.md'
 
