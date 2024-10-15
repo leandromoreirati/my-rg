@@ -1,4 +1,4 @@
-run-name: 'Release'
+run-name: 'Update README.md'
 
 on:
   push:
