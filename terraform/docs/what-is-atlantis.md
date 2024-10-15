@@ -7,7 +7,7 @@ description: This is a simple feature, however it has had a massive effect on ho
 
  This is a simple feature, however it has had a massive effect on how teams writes Terraform. By bringing a Terraform workflow to pull requests, Atlantis help the Ops team collaborate better on Terraform enabling entire development team to write and execute Terraform safely.
 
-![atlantis](../assets/atlantis_introduction.gif)
+![atlantis](./assets/atlantis_introduction.gif)
 
 # Overview 
 Atlantis is an application for automating Terraform via pull requests. It is deployed as a standalone application into your infrastructure. No third-party has access to your credentials.

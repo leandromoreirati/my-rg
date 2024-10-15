@@ -7,7 +7,7 @@ description: Overview of the Atlantis CLI
 ## Introduction
 
 Atlantis triggers commands via pull request comments.
-![atlantis](../assets/pr-comment-help.png)
+![atlantis](./assets/pr-comment-help.png)
 
 ### Atlantis Help
 
