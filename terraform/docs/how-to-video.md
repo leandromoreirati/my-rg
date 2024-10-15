@@ -5,4 +5,4 @@ title: How to Video?
 description: This is a simple example de How to in video
 ---
 
-[![bla](https://www.youtube-nocookie.com/embed/TmIPWda0IKg?si=O3W38ci_MGelKMYN)](https://www.youtube-nocookie.com/embed/TmIPWda0IKg?si=O3W38ci_MGelKMYN)
+[![Watch the video]([https://img.youtube.com/vi/<your video id](https://www.youtube-nocookie.com/embed/TmIPWda0IKg?si=O3W38ci_MGelKMYN)>/hqdefault.jpg)]([https://youtu.be/<your video id>](https://www.youtube-nocookie.com/embed/TmIPWda0IKg?si=O3W38ci_MGelKMYN)) 
