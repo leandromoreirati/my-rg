@@ -1,5 +1,5 @@
 <!-- BEGIN_AUTOMATED_TF_DOCS_BLOCK -->
-# {{module-name}}
+# my-rg
 
 This example do deployment `Azure Resource Group`.
 
