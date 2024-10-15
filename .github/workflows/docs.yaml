@@ -1,0 +1,17 @@
+run-name: 'Release'
+
+on:
+  push:
+    branches:
+      - main
+      - feature/**
+      - feat/**
+  #workflow_dispatch:
+
+jobs:
+  release:
+    uses: leandromoreirati/github-workflow/.github/workflows/readme.yaml@main
+    with:
+      runs-on: 'ubuntu-latest'
+
+    secrets: inherit
