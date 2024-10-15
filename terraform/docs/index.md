@@ -5,7 +5,7 @@ title: What is Resource Group?
 description: A resource group is a container that holds related resources for an Azure solution. The resource group can include all the resources for the solution, or only those resources that you want to manage as a group.
 ---
 
-![Azure Resource Group](./assets/azure_resource_group.png)
+![Azure Resource Group](./assets/azure-resource-group.png)
 
 [Azure Resource Group](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal) is a container that holds related resources for an Azure solution. The resource group can include all the resources for the solution, or only those resources that you want to manage as a group.
 
