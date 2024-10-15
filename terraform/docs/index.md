@@ -22,5 +22,3 @@ The resource group scope is also used throughout the Azure portal to create view
 - Diagnostics settings blade provides the ability to diagnose errors or review warnings.
 
 The resource group stores metadata about the resources. Therefore, when you specify a location for the resource group, you're specifying where that metadata is stored. For compliance reasons, you might need to ensure that your data is stored in a particular region. Note that resources inside a resource group can be of different regions.
-
-![type:video](https://www.youtube.com/embed/LXb3EKWsInQ)

@@ -15,5 +15,5 @@ nav:
       - How to Use: 'how-to-use-atlantis.md'
   - Variables Available: 'README.md'
   - Module Documentation: https://github.com/leandromoreirati/tf-module-azure-resource-group/blob/main/README.md
-  - Module Changelog: CHANGELOG.md
+  - How To Video: "how-to-video.md"
 
