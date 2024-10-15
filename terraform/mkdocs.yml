@@ -2,6 +2,7 @@ site_name: Sample Docs
 docs_dir: docs
 plugins:
   - techdocs-core
+  - mkdocs-video
 
 #sidebar navigation
 nav:
