@@ -5,4 +5,4 @@ title: How to Video?
 description: This is a simple example de How to in video
 ---
 
-[![](https://markdown-videos-api.jorgenkh.no/youtube/TmIPWda0IKg8)](https://youtu.be/TmIPWda0IKg)
+[![](https://markdown-videos-api.jorgenkh.no/youtube/TmIPWda0IKg)](https://youtu.be/TmIPWda0IKg)
