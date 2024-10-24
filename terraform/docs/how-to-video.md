@@ -5,6 +5,4 @@ title: How to Video?
 description: This is a simple example de How to in video
 ---
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/TmIPWda0IKg?si=O3W38ci_MGelKMYN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
 [![](https://markdown-videos-api.jorgenkh.no/youtube/aIURaocR5D8)](https://youtu.be/aIURaocR5D8)
