@@ -13,7 +13,7 @@ nav:
     - Atlantis:
       - What is Atlantis?: 'what-is-atlantis.md'
       - How to Use: 'how-to-use-atlantis.md'
-  - Variables Available: '../README.md'
+  - Variables Available: 'README.md'
   - Module Documentation: https://github.com/leandromoreirati/tf-module-azure-resource-group/blob/main/README.md
   - How To Video: "how-to-video.md"
 
