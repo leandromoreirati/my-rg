@@ -46,3 +46,6 @@ You can't fully review a Terraform change without seeing the output of terraform
 Atlantis locks a directory/workspace until the pull request is merged or the lock is manually deleted. This ensures that changes are applied in the order expected.
 
 The exact commands that Atlantis runs are configurable. You can run custom scripts to construct your ideal workflow.
+
+## Guga o pagodeiro
+
